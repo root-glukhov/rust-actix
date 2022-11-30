@@ -24,7 +24,7 @@ jobs:
     - name: Deploy to remote  
       uses: root-glukhov/rust-actix  
       with:  
-        local: target/release/rust-actix  
+        local: target/release/rust-actix@latest
         remote: /home/new/rust-actix
         host: $  
         username: $  
