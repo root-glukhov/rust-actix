@@ -1,13 +1,8 @@
-name: Rust
+name: Rust Deployment Workflow
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-env:
-  CARGO_TERM_COLOR: always
 
 jobs:
   build:
@@ -21,4 +16,17 @@ jobs:
 
     - name: Run tests
       run: cargo test --verbose
+
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: 194.58.102.193
+        username: root
+        key: ${{ secrets.REGRU_SECRET }}
+        port: 22
+        script: |
+          cd new
+          git pull origin master
+          git status
+          
 
