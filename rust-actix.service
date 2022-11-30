@@ -1,0 +1,12 @@
+[Unit]
+Description=rust-actix
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+ExecStart=/usr/bin/node /home/rust-actix/target/release/rust-actix
+WorkingDirectory=/home/rust-actix
+
+[Install]
+WantedBy=multi-user.target
