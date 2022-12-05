@@ -1,0 +1,27 @@
+name: Rust Deployment Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup key
+      run: set -eu
+      run: mkdir "$HOME/.ssh"
+      run: echo "${{ secrets.pubkey }}" > "$HOME/.ssh/key"
+
+    - name: Build
+      run: cargo build --verbose
+
+    - name: Tests
+      run: cargo test --verbose
+
+    # - name: Deploy
+      
+          
+
