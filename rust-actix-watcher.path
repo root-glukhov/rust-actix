@@ -1,0 +1,5 @@
+[Path]
+PathModified=/home/rust-actix/rust-actix
+
+[Install]
+WantedBy=multi-user.target

@@ -1,12 +1,11 @@
 [Unit]
-Description=rust-actix
-
-[Service]
-Type=simple
-Restart=always
-RestartSec=5
-ExecStart=/usr/bin/node /home/rust-actix/target/release/rust-actix
+Description=Rust app service
+                                                                     
+[Service]                               
+User=root
+Group=root
 WorkingDirectory=/home/rust-actix
+ExecStart=/home/rust-actix/rust-actix
 
 [Install]
 WantedBy=multi-user.target

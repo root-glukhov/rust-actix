@@ -2,7 +2,7 @@ use actix_web::{middleware, web, App, HttpRequest, HttpServer};
 
 async fn index(req: HttpRequest) -> &'static str {
     println!("REQ: {req:?}");
-    "Hello world! Хохохох!"
+    "Deploy test is done!"
 }
 
 #[actix_web::main]
@@ -14,7 +14,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             // enable logger
             .wrap(middleware::Logger::default())
-            .service(web::resource("/index.html").to(|| async { "Hello world! Хохохох!" }))
+            .service(web::resource("/index.html").to(|| async { "Deploy test is done!" }))
             .service(web::resource("/").to(index))
     })
     .bind(("0.0.0.0", 8080))?
@@ -39,7 +39,7 @@ mod tests {
         assert_eq!(resp.status(), http::StatusCode::OK);
 
         let response_body = resp.into_body();
-        assert_eq!(to_bytes(response_body).await?, r##"Hello world! Хохохох!"##);
+        assert_eq!(to_bytes(response_body).await?, r##"Deploy test is done!"##);
 
         Ok(())
     }
